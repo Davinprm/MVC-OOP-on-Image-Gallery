@@ -1,17 +1,17 @@
 # This htaccess file for checking if the requested URL is not a file or directory n then redirects any URL to index.php with the original URL appended to the query string.
 
-RewriteEngine On
+#RewriteEngine On
     # Turns on the rewrite engine.
 
-RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-f
     # This line is a condition that checks if the requested URL is not a file (!-f).
     # %{REQUEST_FILENAME} refers to the filename of the requested URL.
     # The exclamation mark (!) negates the condition, so this line is checking if the requested URL is not a file.
 
-RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-d
     #This line is another condition that checks if the requested URL is not a directory (!-d).
 
-RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+#RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
     # This line is a rewrite rule that matches any URL (^.*$) and redirects it to index.php.
     # ^ matches the start of the URL.
     # .* matches any characters (including none) until the end of the URL.
@@ -22,3 +22,10 @@ RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
     # L stands for "Last", which means that this rule is the last one to be applied.
     # QSA stands for "Query String Append", which means that the query string of the original URL is appended to the target URL.
 
+
+Options -Multiviews
+
+RewriteEngine On 
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
