@@ -1,4 +1,4 @@
-<?php $this->view("catalog/header"); ?>
+<?php $this->view("catalog/header", $data); ?>
 
     <div class="tm-hero d-flex justify-content-center align-items-center" id="tm-video-container">
         <video autoplay muted loop id="tm-video">
@@ -288,11 +288,7 @@
 
     <?php $this->view("catalog/footer"); ?>
     
-    <script src="<?= ASSETS ?>catalog/js/plugins.js"></script>
     <script>
-        $(window).on("load", function() {
-            $('body').addClass('loaded');
-        });
 
         $(function(){
             /************** Video background *********/

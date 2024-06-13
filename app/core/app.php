@@ -43,11 +43,10 @@ class App
     }
 
     private function splitURL()
-    {
+    {  
         $url = isset($_GET['url']) ? $_GET['url'] : "home";
         // if statement. checking url and set def val if it true (isset)
-
-        return explode("/", filter_var(trim('url',"/"),FILTER_SANITIZE_URL));
+        return explode("/", filter_var(trim($url,"/"),FILTER_SANITIZE_URL));
         // sanitizing n validating user input on URL // second param is to remove any char that not allowed in URL 
         // split a string with explode func on separator (/ = first param) into array with index on it
         // [0] index will be controller
