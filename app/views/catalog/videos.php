@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalog-Z Videos</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="css/templatemo-style.css">
+    <link rel="stylesheet" href="<?= ASSETS ?>catalog/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= ASSETS ?>catalog/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="<?= ASSETS ?>catalog/css/templatemo-style.css">
 <!--
     
 TemplateMo 556 Catalog-Z
@@ -26,7 +26,7 @@ https://templatemo.com/tm-556-catalog-z
     </div>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index">
                 <i class="fas fa-film mr-2"></i>
                 Catalog-Z
             </a>
@@ -36,16 +36,16 @@ https://templatemo.com/tm-556-catalog-z
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link nav-link-1" href="index.html">Photos</a>
+                    <a class="nav-link nav-link-1" href="index">Photos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-2 active" aria-current="page" href="videos.html">Videos</a>
+                    <a class="nav-link nav-link-2 active" aria-current="page" href="videos">Videos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-3" href="about.html">About</a>
+                    <a class="nav-link nav-link-3" href="about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-4" href="contact.html">Contact</a>
+                    <a class="nav-link nav-link-4" href="contact">Contact</a>
                 </li>
             </ul>
             </div>
@@ -54,7 +54,7 @@ https://templatemo.com/tm-556-catalog-z
 
     <div class="tm-hero d-flex justify-content-center align-items-center" id="tm-video-container">
         <video autoplay muted loop id="tm-video">
-            <source src="video/hero.mp4" type="video/mp4">
+            <source src="<?=ASSETS?>catalog/video/hero.mp4" type="video/mp4">
         </video>  
         <i id="tm-video-control-button" class="fas fa-pause"></i>
         <form class="d-flex position-absolute tm-search-form">
@@ -79,10 +79,10 @@ https://templatemo.com/tm-556-catalog-z
         <div class="row tm-mb-90 tm-gallery">
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="img/img-01.jpg" alt="Image" class="img-fluid">
+                    <img src="<?=ASSETS?>catalog/img/img-01.jpg" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>Hangers</h2>
-                        <a href="video-detail.html">View more</a>
+                        <a href="video-detail">View more</a>
                     </figcaption>                    
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
@@ -92,10 +92,10 @@ https://templatemo.com/tm-556-catalog-z
             </div>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="img/img-02.jpg" alt="Image" class="img-fluid">
+                    <img src="<?=ASSETS?>catalog/img/img-02.jpg" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>Perfumes</h2>
-                        <a href="video-detail.html">View more</a>
+                        <a href="video-detail">View more</a>
                     </figcaption>                    
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
@@ -105,10 +105,10 @@ https://templatemo.com/tm-556-catalog-z
             </div>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="img/img-03.jpg" alt="Image" class="img-fluid">
+                    <img src="<?=ASSETS?>catalog/img/img-03.jpg" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>Clocks</h2>
-                        <a href="video-detail.html">View more</a>
+                        <a href="video-detail">View more</a>
                     </figcaption>                    
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
@@ -118,10 +118,10 @@ https://templatemo.com/tm-556-catalog-z
             </div>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="img/img-04.jpg" alt="Image" class="img-fluid">
+                    <img src="<?=ASSETS?>catalog/img/img-04.jpg" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>Plants</h2>
-                        <a href="video-detail.html">View more</a>
+                        <a href="video-detail">View more</a>
                     </figcaption>                    
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
@@ -131,10 +131,10 @@ https://templatemo.com/tm-556-catalog-z
             </div>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="img/img-05.jpg" alt="Image" class="img-fluid">
+                    <img src="<?=ASSETS?>catalog/img/img-05.jpg" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>Morning</h2>
-                        <a href="video-detail.html">View more</a>
+                        <a href="video-detail">View more</a>
                     </figcaption>                    
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
@@ -144,10 +144,10 @@ https://templatemo.com/tm-556-catalog-z
             </div>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="img/img-06.jpg" alt="Image" class="img-fluid">
+                    <img src="<?=ASSETS?>catalog/img/img-06.jpg" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>Pinky</h2>
-                        <a href="video-detail.html">View more</a>
+                        <a href="video-detail">View more</a>
                     </figcaption>                    
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
@@ -157,10 +157,10 @@ https://templatemo.com/tm-556-catalog-z
             </div>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="img/img-07.jpg" alt="Image" class="img-fluid">
+                    <img src="<?=ASSETS?>catalog/img/img-07.jpg" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>Bus</h2>
-                        <a href="video-detail.html">View more</a>
+                        <a href="video-detail">View more</a>
                     </figcaption>                    
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
@@ -170,10 +170,10 @@ https://templatemo.com/tm-556-catalog-z
             </div>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="img/img-08.jpg" alt="Image" class="img-fluid">
+                    <img src="<?=ASSETS?>catalog/img/img-08.jpg" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>New York</h2>
-                        <a href="video-detail.html">View more</a>
+                        <a href="video-detail">View more</a>
                     </figcaption>                    
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
@@ -183,10 +183,10 @@ https://templatemo.com/tm-556-catalog-z
             </div>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="img/img-09.jpg" alt="Image" class="img-fluid">
+                    <img src="<?=ASSETS?>catalog/img/img-09.jpg" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>Abstract</h2>
-                        <a href="video-detail.html">View more</a>
+                        <a href="video-detail">View more</a>
                     </figcaption>                    
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
@@ -196,10 +196,10 @@ https://templatemo.com/tm-556-catalog-z
             </div>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="img/img-10.jpg" alt="Image" class="img-fluid">
+                    <img src="<?=ASSETS?>catalog/img/img-10.jpg" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>Flowers</h2>
-                        <a href="video-detail.html">View more</a>
+                        <a href="video-detail">View more</a>
                     </figcaption>                    
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
@@ -209,10 +209,10 @@ https://templatemo.com/tm-556-catalog-z
             </div>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="img/img-11.jpg" alt="Image" class="img-fluid">
+                    <img src="<?=ASSETS?>catalog/img/img-11.jpg" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>Rosy</h2>
-                        <a href="video-detail.html">View more</a>
+                        <a href="video-detail">View more</a>
                     </figcaption>                    
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
@@ -222,10 +222,10 @@ https://templatemo.com/tm-556-catalog-z
             </div>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="img/img-12.jpg" alt="Image" class="img-fluid">
+                    <img src="<?=ASSETS?>catalog/img/img-12.jpg" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>Rocki</h2>
-                        <a href="video-detail.html">View more</a>
+                        <a href="video-detail">View more</a>
                     </figcaption>                    
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
@@ -235,10 +235,10 @@ https://templatemo.com/tm-556-catalog-z
             </div>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="img/img-13.jpg" alt="Image" class="img-fluid">
+                    <img src="<?=ASSETS?>catalog/img/img-13.jpg" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>Purple</h2>
-                        <a href="video-detail.html">View more</a>
+                        <a href="video-detail">View more</a>
                     </figcaption>                    
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
@@ -248,10 +248,10 @@ https://templatemo.com/tm-556-catalog-z
             </div>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="img/img-14.jpg" alt="Image" class="img-fluid">
+                    <img src="<?=ASSETS?>catalog/img/img-14.jpg" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>Sea</h2>
-                        <a href="video-detail.html">View more</a>
+                        <a href="video-detail">View more</a>
                     </figcaption>                    
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
@@ -261,10 +261,10 @@ https://templatemo.com/tm-556-catalog-z
             </div>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="img/img-15.jpg" alt="Image" class="img-fluid">
+                    <img src="<?=ASSETS?>catalog/img/img-15.jpg" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>Turtle</h2>
-                        <a href="video-detail.html">View more</a>
+                        <a href="video-detail">View more</a>
                     </figcaption>                    
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
@@ -274,10 +274,10 @@ https://templatemo.com/tm-556-catalog-z
             </div>
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
                 <figure class="effect-ming tm-video-item">
-                    <img src="img/img-16.jpg" alt="Image" class="img-fluid">
+                    <img src="<?=ASSETS?>catalog/img/img-16.jpg" alt="Image" class="img-fluid">
                     <figcaption class="d-flex align-items-center justify-content-center">
                         <h2>Peace</h2>
-                        <a href="video-detail.html">View more</a>
+                        <a href="video-detail">View more</a>
                     </figcaption>                    
                 </figure>
                 <div class="d-flex justify-content-between tm-text-gray">
@@ -338,7 +338,7 @@ https://templatemo.com/tm-556-catalog-z
         </div>
     </div>
     
-    <script src="js/plugins.js"></script>
+    <script src="<?= ASSETS ?>catalog/js/plugins.js"></script>
     <script>
         $(window).on("load", function() {
             $('body').addClass('loaded');

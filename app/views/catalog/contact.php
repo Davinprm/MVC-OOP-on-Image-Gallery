@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalog-Z Contact page</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="css/templatemo-style.css">
+    <link rel="stylesheet" href="<?= ASSETS ?>catalog/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= ASSETS ?>catalog/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="<?= ASSETS ?>catalog/css/templatemo-style.css">
 <!--
     
 TemplateMo 556 Catalog-Z
@@ -26,7 +26,7 @@ https://templatemo.com/tm-556-catalog-z
     </div>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="index">
                 <i class="fas fa-film mr-2"></i>
                 Catalog-Z
             </a>
@@ -36,23 +36,23 @@ https://templatemo.com/tm-556-catalog-z
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link nav-link-1" href="index.html">Photos</a>
+                    <a class="nav-link nav-link-1" href="index">Photos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-2" href="videos.html">Videos</a>
+                    <a class="nav-link nav-link-2" href="videos">Videos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-3" href="about.html">About</a>
+                    <a class="nav-link nav-link-3" href="about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-4 active" aria-current="page" href="contact.html">Contact</a>
+                    <a class="nav-link nav-link-4 active" aria-current="page" href="contact">Contact</a>
                 </li>
             </ul>
             </div>
         </div>
     </nav>
 
-    <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="img/hero.jpg"></div>
+    <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="<?=ASSETS?>catalog/img/hero.jpg"></div>
 
     <div class="container-fluid tm-mt-60">
         <div class="row tm-mb-50">
@@ -127,7 +127,7 @@ https://templatemo.com/tm-556-catalog-z
         </div>
         <div class="row tm-mb-74 tm-people-row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-5">
-                <img src="img/people-1.jpg" alt="Image" class="mb-4 img-fluid">
+                <img src="<?=ASSETS?>catalog/img/people-1.jpg" alt="Image" class="mb-4 img-fluid">
                 <h2 class="tm-text-primary mb-4">Ryan White</h2>
                 <h3 class="tm-text-secondary h5 mb-4">Chief Executive Officer</h3>
                 <p class="mb-4">
@@ -140,7 +140,7 @@ https://templatemo.com/tm-556-catalog-z
                 </ul>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-5">
-                <img src="img/people-2.jpg" alt="Image" class="mb-4 img-fluid">
+                <img src="<?=ASSETS?>catalog/img/people-2.jpg" alt="Image" class="mb-4 img-fluid">
                 <h2 class="tm-text-primary mb-4">Catherine Pinky</h2>
                 <h3 class="tm-text-secondary h5 mb-4">Chief Marketing Officer</h3>
                 <p class="mb-4">
@@ -153,7 +153,7 @@ https://templatemo.com/tm-556-catalog-z
                 </ul>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-5">
-                <img src="img/people-3.jpg" alt="Image" class="mb-4 img-fluid">
+                <img src="<?=ASSETS?>catalog/img/people-3.jpg" alt="Image" class="mb-4 img-fluid">
                 <h2 class="tm-text-primary mb-4">Johnny Brief</h2>
                 <h3 class="tm-text-secondary h5 mb-4">Accounting Executive</h3>
                 <p class="mb-4">
@@ -166,7 +166,7 @@ https://templatemo.com/tm-556-catalog-z
                 </ul>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-5">
-                <img src="img/people-4.jpg" alt="Image" class="mb-4 img-fluid">
+                <img src="<?=ASSETS?>catalog/img/people-4.jpg" alt="Image" class="mb-4 img-fluid">
                 <h2 class="tm-text-primary mb-4">George Nelson</h2>
                 <h3 class="tm-text-secondary h5 mb-4">Creative Art Director #C69</h3>
                 <p class="mb-4">
@@ -219,7 +219,7 @@ https://templatemo.com/tm-556-catalog-z
         </div>
     </footer>
     
-    <script src="js/plugins.js"></script>
+    <script src="<?= ASSETS ?>catalog/js/plugins.js"></script>
     <script>
         $(window).on("load", function() {
             $('body').addClass('loaded');
