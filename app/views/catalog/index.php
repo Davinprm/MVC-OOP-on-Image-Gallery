@@ -1,4 +1,4 @@
-<?php $this->view("catalog/header"); ?>
+<?php $this->view("catalog/header", $data); ?>
 
 <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll" data-image-src="<?=ASSETS?>catalog/img/hero.jpg">
     <form class="d-flex tm-search-form">
