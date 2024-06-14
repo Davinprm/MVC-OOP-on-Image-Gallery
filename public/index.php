@@ -1,4 +1,6 @@
 <?php 
+session_start();
+
 // connect to init.php cuz that file is connector to other file 
 require "../app/init.php";
 

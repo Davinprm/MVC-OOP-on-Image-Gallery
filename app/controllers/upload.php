@@ -11,8 +11,8 @@ class Upload extends Controller
 
         if(isset($_FILES['file']))
         {
-            show($_POST);
-            show($_FILES);
+            $model = $this->loadModel("Upload_file");
+            $model->upload($_POST, $_FILES);
         }
         $this->view("catalog/upload_image", $data);
     }
