@@ -28,23 +28,28 @@ class Database
         $DB = $this->db_connect();
         // call conn method to establish a conn to d db n save it to DB var
 
+        // instance of d PDOStatement class
         $stm = $DB->prepare($query);
         // prepare d SQL query using PDO prepare method to be executed with given data
 
-        if (count($data) > 0) 
-        // return d number of elmnt in array or number of char in a string.
+        if (count($data) > 0)
+        // return d number of elmnt in array or number of char in a string. checking if d data array is'nt empty
         {
             $check = $stm->execute($data);
             // execute d prepared stmt or query below, depending on d condition above
         } else {
-            $check = $stm->query($data);
+            $stm = $DB->query($query);
+            // executesSQL query n returns d result as an array
+            $check = 0;
+            if ($stm) {
+                $check = 1;
+            }
         }
 
         if ($check) {
             return $stm->fetchAll(PDO::FETCH_OBJ);
             // return d result of d query using fetchAll method, will return d result as an array of obj
         }
-        
         return false;
     }
 
@@ -54,10 +59,17 @@ class Database
         $DB = $this->db_connect();
         $stm = $DB->prepare($query);
 
-        if (count($data) > 0) {
+        if (count($data) > 0)
+        // return d number of elmnt in array or number of char in a string.
+        {
             $check = $stm->execute($data);
+            // execute d prepared stmt or query below, depending on d condition above
         } else {
-            $check = $stm->query($data);
+            $stm = $DB->query($query);
+            $check = 0;
+            if ($stm) {
+                $check = 1;
+            }
         }
 
         if ($check) {
