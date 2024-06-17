@@ -2,7 +2,7 @@
             <figure class="effect-ming tm-video-item">
                 <img src="<?=ROOT . $data->image?>" alt="Image" class="img-fluid">
                 <figcaption class="d-flex align-items-center justify-content-center">
-                    <h2>Clocks</h2>
+                    <h2><?=$data->title?></h2>
                     <a href="photo-detail">View more</a>
                 </figcaption>
             </figure>
