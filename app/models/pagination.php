@@ -1,9 +1,15 @@
 <?php
 class Pagination
 {
+    private $URL = "";
+
+	public function __construct()
+	{
+		$this->URL = $_GET;
+	}
     public function activepage()
     {
-        $activepage = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
+        $activepage = isset($this->URL["page"]) ? (int)$this->URL["page"] : 1;
         return $activepage;
     }
 
