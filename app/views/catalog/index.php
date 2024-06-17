@@ -17,7 +17,7 @@
         </h2>
         <div class="col-6 d-flex justify-content-end align-items-center">
             <form action="" class="tm-text-primary">
-                Page <input type="text" value="1" size="1" class="tm-input-paging tm-text-primary"> of 200
+                Page <input type="text" value="<?=$data['activepage']?>" size="1" class="tm-input-paging tm-text-primary"> of <?=$data['pagetotal']?>
             </form>
         </div>
     </div>
@@ -27,23 +27,28 @@
         if (is_array($data['images'])) {
             foreach ($data['images'] as $row) {
                 $this->view("catalog/single_image", $row);
-
             }
-
         }
         ?>
 
     </div> <!-- row -->
     <div class="row tm-mb-90">
         <div class="col-12 d-flex justify-content-between align-items-center tm-paging-col">
-            <a href="javascript:void(0);" class="btn btn-primary tm-btn-prev mb-2 disabled">Previous</a>
+            <?php if ($data['activepage'] > 1) {?>
+                <a href="?page=<?=$data['activepage'] - 1?>" class="btn btn-primary tm-btn-prev mb-2">Previous</a>
+            <?php ;}?>
             <div class="tm-paging d-flex">
-                <a href="javascript:void(0);" class="active tm-paging-link">1</a>
-                <a href="javascript:void(0);" class="tm-paging-link">2</a>
-                <a href="javascript:void(0);" class="tm-paging-link">3</a>
-                <a href="javascript:void(0);" class="tm-paging-link">4</a>
+                <?php for ($i = 1; $i <= $data['pagetotal']; $i++) {?>
+                    <?php if ($i == $data['activepage']) {?>
+                        <a href="?page=<?=$i?>" class="active tm-paging-link"><?=$i?></a>
+                    <?php ;} else {?>
+                        <a href="?page=<?=$i?>" class="tm-paging-link"><?=$i?></a>
+                    <?php ;}?>
+                <?php ;}?>
             </div>
-            <a href="javascript:void(0);" class="btn btn-primary tm-btn-next">Next Page</a>
+            <?php if ($data['pagetotal'] > $data['activepage']) {?>
+                <a href="?page=<?=$data['activepage'] + 1?>" class="btn btn-primary tm-btn-next">Next Page</a>
+            <?php ;}?>
         </div>
     </div>
 </div> <!-- container-fluid, tm-container-content -->

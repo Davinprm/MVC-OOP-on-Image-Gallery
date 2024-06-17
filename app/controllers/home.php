@@ -1,9 +1,13 @@
 <?php
-class Home extends Controller
+class Home extends Controller 
 {
     public function index()
     {
         $data['page_title'] = "Photos";
+
+        $page = $this->loadModel("Pagination");
+        $data['activepage'] = $page->activepage();
+        $data['pagetotal'] = $page->pagetotal();
 
         $load_class = $this->loadModel("load_images");
 

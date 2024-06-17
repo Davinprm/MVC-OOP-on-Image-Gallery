@@ -6,18 +6,19 @@ class Load_images
     public function get_images($find)
     {
         $DB = new Database();
-        // instantiate d db class
+        $pagpage = 1;
+        $activepage = (isset($_GET["page"])) ? $_GET["page"] : 1;
+        $firstdata = ($pagpage * $activepage) - $pagpage;
 
         if($find == '')
         {
-            $query = "select * from images order by id desc limit 12";
+            $query = "select * from images order by id desc limit $firstdata, $pagpage";
             return $DB->read($query);
 
         } else {
-            $query = "select * from images where title like '%$find%' order by id desc limit 12";
+            $find = esc($find);
+            $query = "select * from images where title like '%$find%' order by id desc limit $firstdata, $pagpage";
             return $DB->read($query);
         }
-
-
     }
 }
