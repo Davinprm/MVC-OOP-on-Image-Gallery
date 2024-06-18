@@ -1,14 +1,21 @@
 <?php
 class Upload_file
 {
+    private $model;
+
+    public function __construct()
+    {
+        // instantiate db class and save it on DB var
+        $this->model = new Database();
+    }
+
     // get post and file by construct param
     public function upload($POST, $FILES)
     {
         $_SESSION['error'] = "";
 
         // type of file that allowed
-        $allowed[] = 'image/jpeg';
-        $allowed[] = 'video/mp4';
+        $allowed = ['image/jpeg', 'video/mp4'];
 
         // upload d file
         if ($FILES['file']['name'] != "" && $FILES['file']['error'] == 0)
@@ -43,24 +50,22 @@ class Upload_file
             // move uploaded file from temporary dir to specified location n d server 
             // first patam is $tmp_name as d name of d file and second param is d new location for d file
 
-            $arr['title'] = esc($POST['title']);
-            // escaping string that we can't fully trust by adding addslashes func
-            $arr['date'] = date("Y-m-d H:i:s");
-            // set date year month day with hour min sec
-            $arr['userid'] = 1;
-            $arr['image'] = $destination;
-            $arr['views'] = 0;
-            $arr['url_address'] = get_random_string_max(60);
-            // 60 char random string for url address
+            $arr = [
+                'title' => esc($POST['title']),
+                // escaping string that we can't fully trust by adding addslashes func
+                'date' => date("Y-m-d H:i:s"),
+                // set date year month day with hour min sec
+                'userid' => 1,
+                'image' => $destination,
+                'views' => 0,
+                'url_address' => get_random_string_max(60)
+                // 60 char random string for url address
+            ];
 
-            $DB = new Database();
-            // instantiate db class and save it on DB var
-            $query = "insert into images (title,date,userid,image,views,url_address) values (:title,:date,:userid,:image,:views,:url_address)";
-            //
-            $DB->write($query,$arr);
-            // 
+            $query = 'INSERT INTO images (title, date, userid, image, views, url_address) VALUES (:title, :date, :userid, :image, :views, :url_address)';
+            $this->model->insert($query, $arr);
 
-            header("Location: " . ROOT . "photos");
+            redirect("photos");
             die;
         }
     }

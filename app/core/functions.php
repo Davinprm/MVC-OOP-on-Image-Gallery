@@ -29,3 +29,8 @@ function get_random_string_max($length)
     }
     return $text;
 }
+
+function redirect($location)
+{
+    header("Location: " . ROOT . "$location");
+}

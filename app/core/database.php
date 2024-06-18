@@ -1,73 +1,132 @@
 <?php
 class Database
 {
-    public function db_connect()
+    // to conn PDO to db
+    private $host = DB_HOST;
+    private $user = DB_USER;
+    private $pass = DB_PASS;
+    private $dbname = DB_NAME;
+
+    // PDO obj
+    private $dbh;
+    // assigned PDO
+    private $stmt;
+    // hold d query for PDO
+    private $error;
+    // if $dbh PDO error
+
+    public function __construct()
     {
-        // to handle any exceptions that might occur during d db conn process
+        // set dsn = data source name
+        $dbh = "mysql:host=" . $this->host . ";dbname=" . $this->dbname;
+        // mysql: d db driver
+        // host=localhost: d hostname or IP address of d db server
+        // dbname=catalog_db: The name of d db to conn
+
+        // configure d PDO prop. PDO work to check, prepared, n execute any data from user before adding to sql query
+        $options = array(
+            PDO::ATTR_PERSISTENT => true,
+            // always check d existing PDO collection before creating new one
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+            // handling error for PDO
+        );
+
+        // create PDO instance
         try {
-            $string = "mysql:host=localhost;dbname=catalog_db;";
-            // mysql: d db driver
-            // host=localhost: d hostname or IP address of d db server
-            // dbname=catalog_db: The name of d db to conn
-
-            return $db = new PDO($string, 'root', '');
-            // first param is d conn $string
-            // second param is d username
-            // third param is the pass an empty string, which means the default pass
-
+            $this->dbh = new PDO($dbh, $this->user, $this->pass, $options);
         } catch (PDOException $e) {
-            die($e->getMessage());
-            // if an exception occurs during d db conn
-            // die stmnt will display d error message to d user
-            // $e var is an instance of d PDOException class, which represents d exception that was thrown
+            $this->error = $e->getMessage();
+            echo $this->error;
         }
+        // if try catch is success, that dbh var will be PDO
     }
 
-    public function read($query, $data = [])
+    // method for prepare query
+    public function query($query)
     {
-        $DB = $this->db_connect();
-        // call conn method to establish a conn to d db n save it to DB var
+        // prepare 
+        return $this->dbh->prepare($query);
+    }
 
-        // instance of d PDOStatement class
-        $stm = $DB->prepare($query);
-        // prepare d SQL query using PDO prepare method to be executed with given data
+    // binding val to prepared stmt using named param
+    public function bind($param, $value, $type = null)
+    {
+        if (is_null($type)) {
+            switch (true) { //to switch run
+                case is_int($value): // if d val is int
+                    $type = PDO::PARAM_INT;
+                    break;
+                case is_bool($value):
+                    $type = PDO::PARAM_BOOL;
+                    break;
+                case is_null($value):
+                    $type = PDO::PARAM_NULL;
+                    break;
+                default:
+                    $type = PDO::PARAM_STR;
+            }
+        }
+        // value binding to d prepared stmt
+        $this->stmt->bindValue($param, $value, $type);
+    }
 
-        if (count($data) > 0)
-        // return d number of elmnt in array or number of char in a string. checking if d data array is'nt empty
-        {
-            $check = $stm->execute($data);
-            // execute d prepared stmt or query below, depending on d condition above
+    // execute d prepared stmt, run query
+    public function execute($data)
+    {
+        return $this->stmt->execute($data);
+    }
+
+    // return multiple records
+    public function resultSet()
+    {
+        return $this->stmt->fetchAll(PDO::FETCH_OBJ);
+        // return an array obj, should be used for fetching multiple row
+    }
+
+    // return single records
+    public function single()
+    {
+        return $this->stmt->fetch(PDO::FETCH_OBJ);
+        // return d single obj, first row found that match d query
+    }
+
+    // get row count
+    public function rowCount()
+    {
+        return $this->stmt->rowCount();
+        // tell how many rows that match d query that have been executed by PDO
+    }
+
+    public function show($query, $data = [])
+    {
+        $this->stmt = $this->query($query);
+
+        if (count($data) > 0) {
+            $check = $this->execute($data);
         } else {
-            $stm = $DB->query($query);
-            // executesSQL query n returns d result as an array
+            $stmt = $this->query($query);
             $check = 0;
-            if ($stm) {
+            if ($stmt) {
                 $check = 1;
             }
         }
 
         if ($check) {
-            return $stm->fetchAll(PDO::FETCH_OBJ);
-            // return d result of d query using fetchAll method, will return d result as an array of obj
+            return $this->resultSet();
         }
         return false;
     }
 
-    // same code as above
-    public function write($query, $data = [])
+    public function insert($query, $data = [])
     {
-        $DB = $this->db_connect();
-        $stm = $DB->prepare($query);
+        $this->stmt = $this->query($query);
 
-        if (count($data) > 0)
-        // return d number of elmnt in array or number of char in a string.
-        {
-            $check = $stm->execute($data);
-            // execute d prepared stmt or query below, depending on d condition above
+        if (count($data) > 0) {
+            $check = $this->execute($data);
         } else {
-            $stm = $DB->query($query);
+            $stmt = $this->query($query);
             $check = 0;
-            if ($stm) {
+            if ($stmt) {
                 $check = 1;
             }
         }
@@ -75,7 +134,7 @@ class Database
         if ($check) {
             return true;
         }
-
+        
         return false;
     }
 }

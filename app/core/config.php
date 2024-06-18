@@ -1,5 +1,10 @@
 <?php
 // define has no scope, it's universal, with first param as a constant name n second param is a val
+// DB
+define('DB_HOST', 'localhost:4306');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'catalog_db');
 
 define ('WEBSITE_TITLE', "Gallery Image");
 // define d website title
