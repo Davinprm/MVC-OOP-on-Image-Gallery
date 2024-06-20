@@ -16,8 +16,7 @@ class Load_images
         $activepage = (isset($_GET["page"])) ? $_GET["page"] : 1;
         $firstdata = ($pagpage * $activepage) - $pagpage;
 
-        if($find == '')
-        {
+        if ($find == '') {
             $query = "SELECT * FROM images ORDER BY id DESC LIMIT $firstdata, $pagpage";
             return $this->db->show($query);
 
@@ -36,7 +35,7 @@ class Load_images
 
         $query = "SELECT * FROM images WHERE url_address = :url LIMIT 1";
         $arr['url'] = $url_address;
-        $data =  $this->db->show($query, $arr);
+        $data = $this->db->show($query, $arr);
         return $data[0];
     }
 }

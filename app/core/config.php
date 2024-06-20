@@ -6,7 +6,7 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'catalog_db');
 
-define ('WEBSITE_TITLE', "Gallery Image");
+define('WEBSITE_TITLE', "Gallery Image");
 // define d website title
 
 // root paths

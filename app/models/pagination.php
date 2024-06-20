@@ -4,14 +4,14 @@ class Pagination
     private $URL = "";
     private $db;
 
-	public function __construct()
-	{
-		$this->URL = $_GET;
+    public function __construct()
+    {
+        $this->URL = $_GET;
         $this->db = new Database();
-	}
+    }
     public function activepage()
     {
-        $activepage = isset($this->URL["page"]) ? (int)$this->URL["page"] : 1;
+        $activepage = isset($this->URL["page"]) ? (int) $this->URL["page"] : 1;
         return $activepage;
     }
 

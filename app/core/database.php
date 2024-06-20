@@ -35,7 +35,7 @@ class Database
         try {
             $dbh = new PDO($dbh, $this->user, $this->pass, $options);
             $this->dbh = $dbh;
-            
+
         } catch (PDOException $e) {
             $this->error = $e->getMessage();
             echo $this->error;
@@ -137,7 +137,7 @@ class Database
         if ($check) {
             return true;
         }
-        
+
         return false;
     }
 }

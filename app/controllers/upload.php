@@ -11,18 +11,19 @@ class Upload extends Controller
 
         $user = $this->loadModel("user");
         // check if user is logged in
-        if(!$result = $user->is_logged_in())
-        {
+        if (!$result = $user->is_logged_in()) {
             redirect("login");
             die;
         }
 
-        if(isset($_FILES['file']))
-        {
+        if (isset($_FILES['file'])) {
             $model = $this->loadModel("Upload_file");
             $model->upload($_POST, $_FILES);
         }
+
+        $this->view('catalog/header', $data);
         $this->view("catalog/upload_image", $data);
+        $this->view("catalog/footer", $data);
     }
 
     public function video()

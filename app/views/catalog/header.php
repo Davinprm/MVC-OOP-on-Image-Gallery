@@ -24,9 +24,7 @@
             <a class="navbar-brand" href="<?= ROOT ?>">
                 <i class="fas fa-film mr-2"></i>
                 <?= WEBSITE_TITLE ?>
-                <?php
-                echo isset($_SESSION['user_email']) ? " | " . $_SESSION['user_email'] : "";
-                ?>
+                <?= isset($_SESSION['user_email']) ? " | " . $_SESSION['user_email'] : ""; ?>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

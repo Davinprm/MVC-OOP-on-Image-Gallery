@@ -26,11 +26,9 @@ class App
         $this->controller = new $this->controller;
 
         // check existing [1] index on user url input, if it's not then run index func on Home class
-        if (isset($url[1])) 
-        {
+        if (isset($url[1])) {
             // check existing method with first param as a class n second param is d method
-            if (method_exists($this->controller, $url[1]))
-            {
+            if (method_exists($this->controller, $url[1])) {
                 $this->method = $url[1];
                 unset($url[1]);
             }
@@ -38,15 +36,15 @@ class App
 
         //return all d val from d array with indexes start from [0] again to prevent params is start on number [2] index as a def url
         $this->params = array_values($url);
-        call_user_func_array([$this->controller,$this->method], $this->params);
+        call_user_func_array([$this->controller, $this->method], $this->params);
         //this func to call user defined function
     }
 
     private function splitURL()
-    {  
+    {
         $url = isset($_GET['url']) ? $_GET['url'] : "home";
         // if statement. checking url and set def val if it true (isset)
-        return explode("/", filter_var(trim($url,"/"),FILTER_SANITIZE_URL));
+        return explode("/", filter_var(trim($url, "/"), FILTER_SANITIZE_URL));
         // sanitizing n validating user input on URL // second param is to remove any char that not allowed in URL 
         // split a string with explode func on separator (/ = first param) into array with index on it
         // [0] index will be controller

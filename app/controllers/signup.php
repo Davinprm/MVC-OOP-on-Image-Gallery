@@ -11,6 +11,8 @@ class Signup extends Controller
             $model->signup($_POST);
         }
 
+        $this->view("catalog/header", $data);
         $this->view("catalog/signup", $data);
+        $this->view("catalog/footer", $data);
     }
 }
