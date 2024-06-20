@@ -33,7 +33,9 @@ class Database
 
         // create PDO instance
         try {
-            $this->dbh = new PDO($dbh, $this->user, $this->pass, $options);
+            $dbh = new PDO($dbh, $this->user, $this->pass, $options);
+            $this->dbh = $dbh;
+            
         } catch (PDOException $e) {
             $this->error = $e->getMessage();
             echo $this->error;
@@ -42,11 +44,11 @@ class Database
     }
 
     // method for prepare query
-    public function query($query)
-    {
-        // prepare 
-        return $this->dbh->prepare($query);
-    }
+    // public function query($query)
+    // {
+    //     // prepare 
+    //     return $this->dbh->prepare($query);
+    // }
 
     // binding val to prepared stmt using named param
     public function bind($param, $value, $type = null)
@@ -77,11 +79,11 @@ class Database
     }
 
     // return multiple records
-    public function resultSet()
-    {
-        return $this->stmt->fetchAll(PDO::FETCH_OBJ);
-        // return an array obj, should be used for fetching multiple row
-    }
+    // public function resultSet()
+    // {
+    //     return $this->stmt->fetchAll(PDO::FETCH_OBJ);
+    //     // return an array obj, should be used for fetching multiple row
+    // }
 
     // return single records
     public function single()
@@ -99,12 +101,13 @@ class Database
 
     public function show($query, $data = [])
     {
-        $this->stmt = $this->query($query);
+        $stmt = $this->dbh->prepare($query);
+        $this->stmt = $stmt;
 
         if (count($data) > 0) {
             $check = $this->execute($data);
         } else {
-            $stmt = $this->query($query);
+            $stmt = $this->dbh->query($query);
             $check = 0;
             if ($stmt) {
                 $check = 1;
@@ -112,19 +115,19 @@ class Database
         }
 
         if ($check) {
-            return $this->resultSet();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
         return false;
     }
 
     public function insert($query, $data = [])
     {
-        $this->stmt = $this->query($query);
+        $this->stmt = $this->dbh->prepare($query);
 
         if (count($data) > 0) {
             $check = $this->execute($data);
         } else {
-            $stmt = $this->query($query);
+            $stmt = $this->dbh->query($query);
             $check = 0;
             if ($stmt) {
                 $check = 1;

@@ -2,10 +2,12 @@
 class Pagination
 {
     private $URL = "";
+    private $db;
 
 	public function __construct()
 	{
 		$this->URL = $_GET;
+        $this->db = new Database();
 	}
     public function activepage()
     {
@@ -15,10 +17,9 @@ class Pagination
 
     public function pagetotal()
     {
-        $DB = new Database();
         $pagpage = 1;
-        $query = "select * from images";
-        $data = count($DB->read($query));
+        $query = 'SELECT * FROM images';
+        $data = count($this->db->show($query));
         $pagetotal = ceil($data / $pagpage);
         return $pagetotal;
     }

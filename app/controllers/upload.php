@@ -9,6 +9,14 @@ class Upload extends Controller
     {
         $data['page_title'] = "Upload Image";
 
+        $user = $this->loadModel("user");
+        // check if user is logged in
+        if(!$result = $user->is_logged_in())
+        {
+            redirect("login");
+            die;
+        }
+
         if(isset($_FILES['file']))
         {
             $model = $this->loadModel("Upload_file");

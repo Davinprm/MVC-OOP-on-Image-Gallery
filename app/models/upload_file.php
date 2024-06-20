@@ -1,12 +1,12 @@
 <?php
 class Upload_file
 {
-    private $model;
+    private $db;
 
     public function __construct()
     {
         // instantiate db class and save it on DB var
-        $this->model = new Database();
+        $this->db = new Database();
     }
 
     // get post and file by construct param
@@ -55,15 +55,15 @@ class Upload_file
                 // escaping string that we can't fully trust by adding addslashes func
                 'date' => date("Y-m-d H:i:s"),
                 // set date year month day with hour min sec
-                'userid' => 1,
+                'user_url' => esc($POST['user_url']),
                 'image' => $destination,
                 'views' => 0,
                 'url_address' => get_random_string_max(60)
                 // 60 char random string for url address
             ];
 
-            $query = 'INSERT INTO images (title, date, userid, image, views, url_address) VALUES (:title, :date, :userid, :image, :views, :url_address)';
-            $this->model->insert($query, $arr);
+            $query = 'INSERT INTO images (title, date, user_url, image, views, url_address) VALUES (:title, :date, :user_url, :image, :views, :url_address)';
+            $this->db->insert($query, $arr);
 
             redirect("photos");
             die;
