@@ -6,12 +6,12 @@
         <div class="form-group">
             <label for="email">Email address</label>
             <input type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp"
-                placeholder="Email address" required>
+                placeholder="Email/Username" required>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" name="submit" class="btn btn-primary">Login</button>
     </form>
 </div>

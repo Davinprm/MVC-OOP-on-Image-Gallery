@@ -55,7 +55,7 @@ class Upload_file
                 // escaping string that we can't fully trust by adding addslashes func
                 'date' => date("Y-m-d H:i:s"),
                 // set date year month day with hour min sec
-                'user_url' => esc($POST['user_url']),
+                'user_url' => get_random_string_max(60),
                 'image' => $destination,
                 'views' => 0,
                 'url_address' => get_random_string_max(60)
@@ -65,7 +65,7 @@ class Upload_file
             $query = 'INSERT INTO images (title, date, user_url, image, views, url_address) VALUES (:title, :date, :user_url, :image, :views, :url_address)';
             $this->db->insert($query, $arr);
 
-            redirect("photos");
+            redirect("catalog/photos");
             die;
         }
     }

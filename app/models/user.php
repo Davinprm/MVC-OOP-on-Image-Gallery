@@ -30,7 +30,7 @@ class User
             $query = 'INSERT INTO users (email, password, date, url_address, image) VALUES (:email, :password, :date, :url_address, :image)';
             $this->db->insert($query, $arr);
 
-            redirect("login");
+            redirect("login/login");
             die;
         }
     }
@@ -55,7 +55,7 @@ class User
 
                 $_SESSION['user_url'] = $data->url_address;
                 $_SESSION['user_email'] = $data->email;
-                redirect("photos");
+                redirect("catalog/photos");
                 die;
             } else {
 

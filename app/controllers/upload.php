@@ -12,7 +12,7 @@ class Upload extends Controller
         $user = $this->loadModel("user");
         // check if user is logged in
         if (!$result = $user->is_logged_in()) {
-            redirect("login");
+            redirect("login/login");
             die;
         }
 
@@ -21,14 +21,14 @@ class Upload extends Controller
             $model->upload($_POST, $_FILES);
         }
 
-        $this->view('catalog/header', $data);
-        $this->view("catalog/upload_image", $data);
-        $this->view("catalog/footer", $data);
+        $this->view('templates/header', $data);
+        $this->view("upload/upload_image", $data);
+        $this->view("templates/footer", $data);
     }
 
     public function video()
     {
         $data['page_title'] = "Upload Video";
-        $this->view("catalog/upload_video", $data);
+        $this->view("upload/upload_video", $data);
     }
 }

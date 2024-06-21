@@ -12,16 +12,16 @@
 
 <body>
     <!-- Page Loader -->
-    <div id="loader-wrapper">
+    <!-- <div id="loader-wrapper">
         <div id="loader"></div>
 
         <div class="loader-section section-left"></div>
         <div class="loader-section section-right"></div>
-    </div>
+    </div> -->
 
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="<?= ROOT ?>">
+            <a class="navbar-brand" href="<?= ROOT ?>home">
                 <i class="fas fa-film mr-2"></i>
                 <?= WEBSITE_TITLE ?>
                 <?= isset($_SESSION['user_email']) ? " | " . $_SESSION['user_email'] : ""; ?>
@@ -34,7 +34,7 @@
                 <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link nav-link-1 <?= ($data['page_title']) == "Photos" ? "active" : ""; ?>"
-                            aria-current="page" href="<?= ROOT ?>index">Photos</a>
+                            aria-current="page" href="<?= ROOT ?>photos">Photos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-link-4 <?= ($data['page_title']) == "Upload Image" ? "active" : ""; ?>"

@@ -5,8 +5,8 @@ class About extends Controller
     {
         $data['page_title'] = "About";
 
-        $this->view('catalog/header', $data);
-        $this->view("catalog/about", $data);
-        $this->view("catalog/footer", $data);
+        $this->view('templates/header', $data);
+        $this->view("about/about", $data);
+        $this->view("templates/footer", $data);
     }
 }

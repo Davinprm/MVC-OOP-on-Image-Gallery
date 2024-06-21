@@ -1,23 +1,16 @@
 <?php
 class Photo_detail extends Controller
 {
-    private $model;
-
-    public function __construct()
-    {
-        $this->model = $this->loadModel("load_images");
-    }
-
     public function index($url_address = '')
     {
-        $data = [
-            'page_title' => "Photo Details",
-            'image' => $this->model->get_single_image($url_address),
-            'random_images' => $this->model->get_images(),
-        ];
+        $data['page_title'] = "Photo Details";
 
-        $this->view("catalog/header", $data);
+        $model = $this->loadModel("load_images");
+        $data['image'] = $model->get_single_image($url_address);
+        $data['random_images'] = $model->get_images();
+
+        $this->view("templates/header", $data);
         $this->view("catalog/photo_detail", $data);
-        $this->view("catalog/footer", $data);
+        $this->view("templates/footer", $data);
     }
 }

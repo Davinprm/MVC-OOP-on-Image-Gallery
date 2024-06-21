@@ -17,8 +17,8 @@ $path = str_replace("\\", "/", "http://" . $_SERVER['SERVER_NAME'] . __DIR__ . "
 $path = str_replace($_SERVER['DOCUMENT_ROOT'], "", $path);
 // removing doc root path "C:/XAMPP/htdocs" with empty array
 
-define('ROOT', str_replace("app/core", "public", $path));
+define('ROOT', str_replace("app/config", "public", $path));
 // defining with "ROOT" as d name // replacing string with another string as first param is obj that want to replace  // replace string with "public" string in second param //third param is subj that want to be replaced
 
-define('ASSETS', str_replace("app/core", "public/assets", $path));
+define('ASSETS', str_replace("app/config", "public/assets", $path));
 // replace first param with second param with third param as d subj

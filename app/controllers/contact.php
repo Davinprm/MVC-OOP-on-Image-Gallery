@@ -5,8 +5,8 @@ class Contact extends Controller
     {
         $data['page_title'] = "Home";
 
-        $this->view('catalog/header', $data);
-        $this->view("catalog/contact", $data);
-        $this->view("catalog/footer", $data);
+        $this->view('templates/header', $data);
+        $this->view("contact/contact", $data);
+        $this->view("templates/footer", $data);
     }
 }

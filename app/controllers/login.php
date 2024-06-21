@@ -10,8 +10,8 @@ class Login extends Controller
             $model->login($_POST);
         }
 
-        $this->view('catalog/header', $data);
-        $this->view("catalog/login", $data);
-        $this->view("catalog/footer", $data);
+        $this->view('templates/header', $data);
+        $this->view("login/login", $data);
+        $this->view("templates/footer", $data);
     }
 }

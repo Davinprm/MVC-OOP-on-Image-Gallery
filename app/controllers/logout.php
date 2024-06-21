@@ -4,7 +4,7 @@ class Logout extends Controller
     public function index()
     {
         unset($_SESSION['user_url'], $_SESSION['user_email']);
-        redirect("photos");
+        redirect("catalog/photos");
         die;
     }
 }
