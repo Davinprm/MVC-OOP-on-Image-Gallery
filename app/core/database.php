@@ -72,23 +72,49 @@ class Database
         $this->stmt->bindValue($param, $value, $type);
     }
 
-    // execute d prepared stmt, run query
-    public function execute($data)
-    {
-        return $this->stmt->execute($data);
-    }
-
-    // return multiple records
-    // public function resultSet()
-    // {
-    //     return $this->stmt->fetchAll(PDO::FETCH_OBJ);
-    //     // return an array obj, should be used for fetching multiple row
-    // }
+        // return single records of array inside an array
+        public function fetchAssoc($query, $data = [])
+        {
+            $stmt = $this->dbh->prepare($query);
+            $this->stmt = $stmt;
+    
+            if (count($data) > 0) {
+                $check = $this->stmt->execute($data);
+            } else {
+                $stmt = $this->dbh->query($query);
+                $check = 0;
+                if ($stmt) {
+                    $check = 1;
+                }
+            }
+    
+            if ($check) {
+            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+            }
+            return false;
+            // return d single obj, first row found that match d query
+        }
 
     // return single records
-    public function single()
+    public function single($query, $data = [])
     {
+        $stmt = $this->dbh->prepare($query);
+        $this->stmt = $stmt;
+
+        if (count($data) > 0) {
+            $check = $this->stmt->execute($data);
+        } else {
+            $stmt = $this->dbh->query($query);
+            $check = 0;
+            if ($stmt) {
+                $check = 1;
+            }
+        }
+
+        if ($check) {
         return $this->stmt->fetch(PDO::FETCH_OBJ);
+        }
+        return false;
         // return d single obj, first row found that match d query
     }
 
@@ -105,7 +131,7 @@ class Database
         $this->stmt = $stmt;
 
         if (count($data) > 0) {
-            $check = $this->execute($data);
+            $check = $this->stmt->execute($data);
         } else {
             $stmt = $this->dbh->query($query);
             $check = 0;
@@ -125,7 +151,7 @@ class Database
         $this->stmt = $this->dbh->prepare($query);
 
         if (count($data) > 0) {
-            $check = $this->execute($data);
+            $check = $this->stmt->execute($data);
         } else {
             $stmt = $this->dbh->query($query);
             $check = 0;
