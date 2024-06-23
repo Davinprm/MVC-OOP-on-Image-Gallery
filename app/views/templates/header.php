@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $data['page_title'] . " | " . WEBSITE_TITLE ?></title>
+    <link rel="stylesheet" href="<?= ASSETS ?>catalog/css/style.css" type="text/css">
     <link rel="stylesheet" href="<?= ASSETS ?>catalog/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= ASSETS ?>catalog/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="<?= ASSETS ?>catalog/css/templatemo-style.css">
@@ -24,7 +25,7 @@
             <a class="navbar-brand" href="<?= ROOT ?>home">
                 <i class="fas fa-film mr-2"></i>
                 <?= WEBSITE_TITLE ?>
-                <?= isset($_SESSION['user_email']) ? " | " . $_SESSION['user_email'] : ""; ?>
+                <?= isset($_SESSION['username']) ? " | " . $_SESSION['username'] : "";?>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

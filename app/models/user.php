@@ -32,61 +32,45 @@ class User
             ];
 
             $query = 'INSERT INTO users (username, email, password, date, url_address, image) VALUES (:username, :email, :password, :date, :url_address, :image)';
-            $this->db->insert($query, $arr);
-            redirect("login/login");
-            die;
+            if ($this->db->insert($query, $arr)) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
-    public function login($email, $password)
+    public function login($usernameOrEmail, $password)
     {
         $_SESSION['error'] = "";
 
         if ($_SESSION['error'] == "") {
 
-            $arr = [
-                'username' => $email,
-                'email' => $email,
-            ];
+            $row = $this->findUser($usernameOrEmail, $usernameOrEmail);
+            if ($row == false) return false;
 
-            $query = 'SELECT password FROM users WHERE username = :username OR email = :email LIMIT 1';
-            $data = $this->db->show($query, $arr);
-
-            // check row
-            if ($this->db->rowCount() == 0) {
-                redirect("login/login");
-                exit();
+            $hashedPassword = $row->password;
+            if (password_verify($password, $hashedPassword)) {
+                return $row;
+            }else{
+                return false;
             }
+        }
+    }
 
-            $checkPassword = password_verify($password, $data[0]->password);
+    public function findUser($username, $email)
+    {
+        $this->db->query('SELECT * FROM users WHERE username = :username OR email = :email');
+        $this->db->bind(':username', $username);
+        $this->db->bind(':email', $email);
 
-            if ($checkPassword == false) {
-                redirect("login/login");
-                exit();
-            } else if ($checkPassword == true) {
-                $ar = [
-                    'username' => $email,
-                    'email' => $email,
-                    'password' => $password
-                ];
-                $query = 'SELECT * FROM users WHERE username = :username OR email = :email AND password = :password LIMIT 1';
-                $user = $this->db->show($query, $ar);
+        $data = $this->db->single();
 
-                $_SESSION['username'] = $user[0]->username;
-                $_SESSION['email'] = $user[0]->email;
-            }
-
-            if (is_array($data)) {
-
-                $data = $data[0];
-
-                $_SESSION['user_url'] = $data->url_address;
-                $_SESSION['email'] = $data->email;
-                redirect("catalog/photos");
-                die;
-            } else {
-
-            }
+        // check row
+        if ($this->db->rowCount() > 0) {
+            return $data;
+        } else {
+            return false;
         }
     }
 
@@ -108,26 +92,10 @@ class User
         return false;
     }
 
-    public function findUser($username, $email)
-    {
-        $query = 'SELECT username FROM users WHERE username = :username OR email = :email;';
-        $arr = [
-            'username' => $username,
-            'email' => $email
-        ];
-
-        $data = $this->db->single($query, $arr);
-
-        if (!is_string($data['username']) || !is_string($data['email'])) {
-            $data = null;
-            redirect("login/signup");
-        }
-
-        // check row
-        if ($this->db->rowCount() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+    public function createUserSession($user){
+        $_SESSION['user_url'] = $user->url_address;
+        $_SESSION['username'] = $user->username;
+        $_SESSION['email'] = $user->email;
+        redirect("index");
     }
 }

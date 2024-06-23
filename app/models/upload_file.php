@@ -65,7 +65,7 @@ class Upload_file
             $query = 'INSERT INTO images (title, date, user_url, image, views, url_address) VALUES (:title, :date, :user_url, :image, :views, :url_address)';
             $this->db->insert($query, $arr);
 
-            redirect("catalog/photos");
+            redirect("photos");
             die;
         }
     }

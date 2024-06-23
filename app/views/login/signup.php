@@ -2,7 +2,9 @@
     <h2 class="col-6 tm-text-primary">
         Sign Up
     </h2>
+    <?php flash('signup') ?>
     <form method="post" enctype="multipart/form-data">
+    <input type="hidden" name="type" value="signup">
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" name="username" class="form-control" id="username" aria-describedby="emailHelp"

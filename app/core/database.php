@@ -44,11 +44,10 @@ class Database
     }
 
     // method for prepare query
-    // public function query($query)
-    // {
-    //     // prepare 
-    //     return $this->dbh->prepare($query);
-    // }
+    public function query($query)
+    {
+        $this->stmt = $this->dbh->prepare($query);
+    }
 
     // binding val to prepared stmt using named param
     public function bind($param, $value, $type = null)
@@ -72,31 +71,14 @@ class Database
         $this->stmt->bindValue($param, $value, $type);
     }
 
-        // return single records of array inside an array
-        public function fetchAssoc($query, $data = [])
-        {
-            $stmt = $this->dbh->prepare($query);
-            $this->stmt = $stmt;
-    
-            if (count($data) > 0) {
-                $check = $this->stmt->execute($data);
-            } else {
-                $stmt = $this->dbh->query($query);
-                $check = 0;
-                if ($stmt) {
-                    $check = 1;
-                }
-            }
-    
-            if ($check) {
-            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
-            }
-            return false;
-            // return d single obj, first row found that match d query
-        }
+    //Execute the prepared statement
+    public function execute()
+    {
+        return $this->stmt->execute();
+    }
 
-    // return single records
-    public function single($query, $data = [])
+    // return single records of array inside an array
+    public function fetchAssoc($query, $data = [])
     {
         $stmt = $this->dbh->prepare($query);
         $this->stmt = $stmt;
@@ -112,17 +94,17 @@ class Database
         }
 
         if ($check) {
-        return $this->stmt->fetch(PDO::FETCH_OBJ);
+            return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         return false;
         // return d single obj, first row found that match d query
     }
 
-    // get row count
-    public function rowCount()
+    // return single records
+    public function single()
     {
-        return $this->stmt->rowCount();
-        // tell how many rows that match d query that have been executed by PDO
+        $this->execute();
+        return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
 
     public function show($query, $data = [])
@@ -165,5 +147,12 @@ class Database
         }
 
         return false;
+    }
+
+    // get row count
+    public function rowCount()
+    {
+        return $this->stmt->rowCount();
+        // tell how many rows that match d query that have been executed by PDO
     }
 }

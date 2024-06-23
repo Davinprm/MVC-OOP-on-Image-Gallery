@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 // make function to print d obj
 function show($stuff)
@@ -48,4 +51,5 @@ function flash($name = '', $message = '', $class = 'form-message form-message-re
 function redirect($location)
 {
     header("Location: " . ROOT . "$location");
+    exit();
 }

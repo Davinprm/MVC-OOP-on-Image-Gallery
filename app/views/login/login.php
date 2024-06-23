@@ -2,7 +2,9 @@
     <h2 class="col-6 tm-text-primary">
         Login
     </h2>
+    <?php flash('login') ?>
     <form method="post" enctype="multipart/form-data">
+    <input type="hidden" name="type" value="login">
         <div class="form-group">
             <label for="email">Email address</label>
             <input type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp"
