@@ -11,7 +11,7 @@ class Upload extends Controller
 
         $user = $this->loadModel("user");
         // check if user is logged in
-        if (!$result = $user->is_logged_in()) {
+        if (false == $user->isLoggedIn()) {
             redirect("login/login");
             die;
         }

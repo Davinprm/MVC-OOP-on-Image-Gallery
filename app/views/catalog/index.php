@@ -1,3 +1,4 @@
+<?session_start()?>
 <div class="tm-hero d-flex justify-content-center align-items-center" data-parallax="scroll"
     data-image-src="<?= ASSETS ?>catalog/img/hero.jpeg">
     <form class="d-flex tm-search-form" method="get">
